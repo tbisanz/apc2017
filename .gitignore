@@ -1,0 +1,81 @@
+# Mac
+.DS_Store
+
+# Linux KDE directory preferences
+.directory
+*~
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Output files
+*.out
+*.xml
+*.err
+
+# Temporary source files
+*.cccc
+*.hhhh
+
+# Local untracked files
+*.xla
+*.bak
+*.swp
+*.spl
+*.shd
+*.cfg
+
+*.tmp
+*.old
+
+*.zip
+*.tgz
+*.tar
+*.gz
+
+*.rtf
+*.doc
+*.docx
+*.ppt
+*.pptx
+
+*.htm
+*.html
+
+obsolete/
+
+underscore.csh
+
+*/testVideoStore

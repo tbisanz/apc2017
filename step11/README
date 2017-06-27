@@ -1,0 +1,41 @@
+At last... Inheritance
+
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+We have several types of movie that have different ways of answering
+the same question. This sounds like a job for subclasses. We can have
+three subclasses of movie, each of which can have its own version of
+charge.
+
+This allows me to replace the switch statement by using
+polymorphism. Sadly it has one slight flaw - it doesn't work. A movie
+can change its classification during its lifetime. An object cannot
+change its class during its lifetime. There is a solution, however,
+the State pattern [Gang of Four].
+
+By adding the indirection we can do the subclassing from the price
+code object and change the price whenever we need to.
+
+If you are familiar with the Gang of Four patterns, you may wonder,
+"Is this a state, or is it a strategy?" Does the price class represent
+an algorithm for calculating the price (in which case I prefer to call
+it the Pricer or PricingStrategy), or does it represent a state of the
+movie (Star Trek X is a new release). At this stage the choice of
+pattern (and name) reflects how you want to think about the
+structure. At the moment I'm thinking about this as state of movie. If
+I later decide a strategy communicates my intention better, I will
+refactor to do this by changing the names.
+
+To introduce the state pattern I will use three refactorings. First
+I'll move the type code behavior into the state pattern with Replace
+Type Code with State/Strategy. Then I can use Move Method
+to move the switch statement into the price class. Finally I'll use
+Replace Conditional with Polymorphism to eliminate the switch
+statement.
+
+I begin with Replace Type Code with State/Strategy. This first
+step is to use Self Encapsulate Field on the type code to ensure
+that all uses of the type code go through getting and setting
+methods. Because most of the code came from the other classes, most
+methods already use the getting method. However, the constructors do
+access the price code. I can use the setting method instead.

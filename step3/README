@@ -1,0 +1,45 @@
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+As I look at amountFor, I can see that it uses information from the
+rental, but does not use information from the customer.
+
+This immediately raises my suspicions that the method is on the wrong
+object. In most cases a method should be on the object whose data it
+uses, thus the method should be moved to the rental. To do this I use
+Move Method. With this you first copy the code over to the
+rental, adjust it to fit in its new home, and compile.
+
+In this case fitting into its home means removing the parameter. I
+also renamed the method as I did the move.
+
+I can now test to see whether the method works. To do this I replace
+the body of Customer::amountFor to delegate to the new method.
+
+    // Customer.cpp
+    ...
+    double Customer::
+    amountFor( const Rental& aRental ) const
+    {
+      return aRental.getCharge();
+    }
+     
+
+I can now compile and test to see whether I've broken anything.
+
+The next step is to find every reference to the old method and adjust
+the reference to use the new method, as follows.
+
+In this case this step is easy because we just created the method and
+it is in only one place. In general, however, you need to do a "find"
+across all the classes that might be using that method.
+
+When I've made the change, the next thing is to remove the old
+method. The compiler should tell me whether I missed anything. I then
+test to see if I've broken anything.
+
+Sometimes I leave the old method to delegate to the new method. This
+is useful if it is a public method and I don't want to change the
+interface of the other class.
+
+There is certainly some more I would like to do to Rental::getCharge
+but I will leave it for the moment and return to Customer::statement.

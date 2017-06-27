@@ -1,0 +1,19 @@
+Removing Temps
+
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+As I suggested before, temporary variables can be a problem. They are
+useful only within their own routine, and thus they encourage long,
+complex routines. In this case we have two temporary variables, both
+of which are being used to get a total from the rentals attached to
+the customer. Both the ASCII and HTML versions require these totals. I
+like to use Replace Temp with Query to replace totalAmount and
+frequentRenterPoints with query methods. Queries are accessible to any
+method in the class and thus encourage a cleaner design without long,
+complex methods.
+
+I began by replacing totalAmount with a charge method on customer.
+
+This isn't the simplest case of Replace Temp with Query,
+totalAmount was assigned to within the loop, so I have to copy the
+loop into the query method.

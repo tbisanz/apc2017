@@ -1,0 +1,30 @@
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+After compiling and testing that refactoring, I did the same for 
+frequentRenterPoints.
+
+It is worth stopping to think a bit about the last refactoring. Most
+refactorings reduce the amount of code, but this one increases
+it. That's because C++ requires a lot of statements to set up a
+summing loop. Even a simple summing loop with one line of code per
+element needs 4-6 lines of support around it. It's an idiom that is
+obvious to any programmer but is a lot of lines all the same.
+
+The other concern with this refactoring lies in performance. The old
+code executed the "for" loop once, the new code executes it three
+times. A for loop that takes a long time might impair
+performance. Many programmers would not do this refactoring simply for
+this reason. But note the words if and might. Until I profile I cannot
+tell how much time is needed for the loop to calculate or whether the
+loop is called often enough for it to affect the overall performance
+of the system. Don't worry about this while refactoring. When you
+optimize you will have to worry about it, but you will be in a much
+better position to do something about it, and you will have more
+options to optimize effectively.
+
+These queries are now available for any code written in the customer
+class. They can easily be added to the interface of the class should
+other parts of the system need this information. Without queries like
+these, other methods have to deal with knowing about the rentals and
+building the loops. In a complex system, that will lead to much more
+code to write and mantain.

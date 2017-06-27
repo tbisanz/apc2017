@@ -1,0 +1,5 @@
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+Once I've moved the getCharge method, I'll do the same with the
+frequent renter point calculation. That keeps both things that vary
+with the type together on the class that has the type.

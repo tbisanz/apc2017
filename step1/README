@@ -1,0 +1,33 @@
+Decomposing and Redistributing the Statement Method
+
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+The obvious first target of my attention is the overly long statement
+method. When I look at a long method like that, I am looking to
+decompose the method into smaller pieces. Smaller pieces of code tend
+to make things more manageable. They are easier to work with and move
+around.
+
+The first phase of refactorings in this chapter show how I split up
+the long method and move the pieces to better classes. My aim is to
+make it easier to write an HTML statement method with much less
+duplication of code.
+
+My first step is to find a logical clump of code and use Extract
+Method. An obvious piece here is the switch statement. This
+looks like it would make a good chunk to extract into its own method.
+
+When I extract a method, as in any refactoring, I need to know what
+can go wrong. If I do the extraction badly, I could introduce a bug
+into the program. So before I do the refactoring I need to figure out
+how to do it safely. I've done this refactoring a few times before, so
+I've written down the safe steps in the catalog.
+
+First I need to look in the fragment for any variables that are local
+in scope to the method we are looking at, the local variables and
+parameters. This segment of code uses two: each and thisAmount. Of
+these each is not modified by the code but thisAmount is modified. Any
+non-modified variable I can pass in as a parameter. Modified variables
+need more care. If there is only one, I can return it. The temp is
+initialized to 0 each time around the loop and is not altered until
+the switch gets to it. So I can just assign the result.

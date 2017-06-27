@@ -1,0 +1,27 @@
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+I am now at the point where I can take off my refactoring hat and put
+on my adding function hat. I can write htmlStatement as follows and
+add appropriate tests.
+
+By extracting the calculations I can create the htmlStatement method
+and reuse all of the calculation code that was in the original
+statement method. I didn't copy and paste, so if the calculation rules
+change I have only one place in the code to go. Any other kind of
+statement will be really quick and easy to prepare. The refactoring
+did not take long. I spent most of the time figuring out what the code
+did, and I would have had to do that anyway.
+
+Some code is copied from the ASCII version, mainly due to setting up
+the loop. Further refactoring could clean that up. Extracting methods
+for header, footer and detail line are one route I could take. You can
+see how to do this in the example for Form Template Method (345). But
+now the users are clamoring again. They are getting ready to change
+the classification of the movies in the store. It's still not clear
+what changes they want to make, but it sounds like new classifications
+will be introduced, and the existing ones could well be changed. The
+charges and frequent renter point allocations for these
+classifications are to be decided. At the moment, making these kind of
+changes is awkward. I have to get into the charge and frequent renter
+point methods and alter the conditional code to make changes to film
+classifications. Back on with the refactoring hat.

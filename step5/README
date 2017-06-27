@@ -1,0 +1,20 @@
+Extracting Frequent Renter Points
+
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+The next step is to do a similar thing for the frequent renter
+points. The rules vary with the tape, although there is less variation
+than with charging. It seems reasonable to put the responsability on
+the rental. First we need to use Extract Method on the frequent
+renter points part of the code.
+
+Again we look at the use of locally scoped variables. Again each is
+used and can be passed in as a parameter. The other temp used is
+frequentRenterPoints. In this case frequentRenterPoints does have a
+value beforehand. The body of the extracted method doesn't read the
+value, however, so we don't need to pass it in as a parameter as long
+as we use an appending assignment.
+
+I did the extraction, compiled, and tested and then did a move and
+compiled and tested again. With refactoring, small steps are the best;
+that way less tends to go wrong.

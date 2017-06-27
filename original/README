@@ -1,0 +1,36 @@
+The First Step in Refactoring
+
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+Whenever I do refactoring, the first step is always the same. I need
+to build a solid set of tests for that section of code. The tests are
+essential because even though I follow refactorings structured to
+avoid most of the opportunities for introducing bugs, I'm still human
+and still make mistakes. Thus I need solid tests.
+
+Because the statement result produces a string, I create a few
+customers, give each customer a few rentals of various kinds of films,
+and generate the statement strings. I then do a string comparison
+between the new string and some reference strings that I have hand
+checked. I set up all of these tests so I can run them from one
+command on the command line. The tests take only a few seconds to run,
+and as you will see, I run them often.
+
+An important part of these tests is the way they report their
+results. They either say "OK", meaning that all the strings are
+identical to the reference strings, or they print a list of failures:
+lines that turned out differently. The tests are thus
+self-checking. It is vital to make tests self-checking. If you don't,
+you end up spending time hand checking some numbers from the test
+against some numbers of a desk pad, and that slows you down.
+
+As we do the refactoring, we will lean on the tests. I'm going to be
+relying on the tests to tell me whether I introduce a bug. It is
+essential for refactoring that you have good tests. It's worth
+spending the time to build the tests, because the tests give you the
+security you need to change the program later. This is such an
+important part of refactoring that I go into more detail on testing in
+Chapter 4.
+
+Before you start refactoring, check that you have a solid suite of
+tests. These tests must be self-checking.

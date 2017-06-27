@@ -1,0 +1,16 @@
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+Once it is moved I can start using Replace Conditional with
+Polymorphism.
+
+I do this by taking one leg of the case statement at time and creating
+an overriding method. I start with RegularPrice.
+
+This overrides the parent case statement, which I just leave as it
+is. I compile and test for this case then take the next leg, compile
+and test. (To make sure I'm executing the subclass code, I like to
+throw in a deliberate bug and run it to ensure the tests blow up. Not
+that I'm paranoid or anything.)
+
+When I've done that with all the legs, I make Price::getCharge a pure virtual 
+function.

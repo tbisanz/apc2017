@@ -1,0 +1,17 @@
+(from M. Fowler, Refactoring: Improving the Design of Existing Code, Addison-Wesley Professional, 1999)
+
+The next thing that strikes me is that thisAmount is now redundant. It
+is set to the result of each.getCharge and not changed afterward. Thus
+I can eliminate thisAmount by using Replace Temp with Query.
+
+Once I've made that change I compile and test to make sure I haven't
+broken anything.
+
+I like to get rid of temporary variables such as this as much as
+possible. Temps are often a problem in that they cause a lot of
+parameters to be passed around when they don't have to be. You can
+easily lose track of what they are there for. They are particularly
+insidious in long methods. Of course there is a performance price to
+pay; here the charge is now calculated twice. But it is easy to
+optimize that in the rental class, and you can optimize much more
+effectively when the code is properly factored.
